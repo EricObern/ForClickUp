@@ -1,0 +1,303 @@
+/* === BASE & VARIABLES === */
+:root {
+    --cu-purple: #7B68EE;
+    --cu-purple-dark: #6556cc;
+    --cu-purple-darker: #5042b4;
+    --cu-purple-light: #f0edff;
+    --cu-pink: #f966ce; /* Accent Pink from buttons/gradients */
+    --cu-blue: #6361ff; /* Accent Blue from buttons/gradients */
+    --cu-gradient-pri: linear-gradient(90deg, var(--cu-blue) 0%, var(--cu-pink) 100%); /* Main Button Gradient */
+    --cu-gradient-sec: linear-gradient(135deg, #8c66ff 0%, #6f53ff 100%); /* Subtle BG Gradient */
+
+    --cu-text-primary: #24223E;
+    --cu-text-secondary: #5e6a86;
+    --cu-text-light: #f7f8fc;
+    --cu-text-dark-heading: #1a1933; /* Slightly darker heading */
+
+    --cu-bg-light: #ffffff; /* Primary background */
+    --cu-bg-secondary: #f7f8fc; /* Textured/Alternative background */
+    --cu-bg-dark: #0f0f2f; /* Dark mode inspired (use sparingly or for elements) */
+
+    --cu-border-light: #e8eaef;
+    --cu-border-subtle: #f2f3f7;
+
+    --cu-shadow-card: 0px 4px 16px rgba(106, 117, 141, 0.08); /* ClickUp-like subtle card shadow */
+    --cu-shadow-button: 0px 2px 8px rgba(123, 104, 238, 0.4); /* Shadow for buttons */
+
+    --font-primary: 'Inter', sans-serif;
+    --header-height: 70px; /* Example, adjust if adding fixed header */
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--cu-bg-secondary); /* Use secondary as main page bg */
+    color: var(--cu-text-primary);
+    line-height: 1.65;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px; /* Add horizontal padding */
+}
+
+/* === TYPOGRAPHY & COMMON ELEMENTS === */
+h1, h2, h3 {
+    font-weight: 700;
+    color: var(--cu-text-dark-heading);
+    line-height: 1.3;
+    margin-bottom: 0.75em;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem); /* Responsive font size */
+    font-weight: 800; /* Extra bold for hero */
+}
+
+h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+}
+
+h3 {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    font-weight: 600;
+}
+
+p {
+    margin-bottom: 1.5em;
+    color: var(--cu-text-secondary);
+    font-size: clamp(0.95rem, 1.5vw, 1.05rem); /* Slight responsiveness */
+}
+
+a {
+    color: var(--cu-purple);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--cu-purple-dark);
+}
+
+.highlight {
+    color: var(--cu-purple);
+    font-weight: 600;
+}
+
+strong.highlight {
+    font-weight: 700; /* Bolder highlight */
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle; /* Align icons better with text */
+     margin-right: 8px;
+}
+
+
+/* === HERO SECTION === */
+.hero {
+    background-color: var(--cu-bg-light);
+    text-align: center;
+    padding: clamp(40px, 10vh, 80px) 20px; /* Responsive padding */
+    margin: 40px 0; /* Top/Bottom margin */
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden; /* For bg elements */
+    border: 1px solid var(--cu-border-subtle);
+     box-shadow: var(--cu-shadow-card);
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative; /* Ensure content is above bg */
+    z-index: 1;
+}
+
+.hero .subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    color: var(--cu-text-primary); /* Make subtitle stronger */
+    font-weight: 500;
+    margin-bottom: 1.5em;
+}
+
+.hero-mission-quote {
+    font-size: 1.1em;
+    font-style: italic;
+    color: var(--cu-text-secondary);
+    margin-bottom: 2em;
+    padding: 10px 20px;
+    display: inline-block;
+     /* background-color: var(--cu-bg-secondary); Optional: subtle background */
+     /* border-radius: 8px; */
+}
+
+
+/* Subtle background decoration (Example) */
+/* .hero-bg-element {
+    position: absolute;
+    top: -50%;
+    left: -30%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(123,104,238,0.05) 0%, rgba(255,255,255,0) 70%);
+    z-index: 0;
+    transform: rotate(15deg);
+} */
+
+.hero .contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px 25px;
+    margin: 30px 0;
+}
+.hero .contact-link, .hero .contact-info span {
+    color: var(--cu-text-secondary);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+}
+.hero .contact-link .icon, .hero .contact-info span .icon {
+    color: var(--cu-purple); /* Color the icon */
+    opacity: 0.8;
+}
+.hero .contact-link:hover {
+    color: var(--cu-purple-dark);
+}
+.hero .contact-link:hover .icon {
+     color: var(--cu-purple-dark);
+ }
+
+.cta-button {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--cu-white);
+    background: var(--cu-gradient-pri);
+    border: none;
+    border-radius: 50px; /* Pill shape */
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+    box-shadow: var(--cu-shadow-button);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 12px rgba(123, 104, 238, 0.5);
+}
+
+/* === CONTENT CARDS / SECTIONS === */
+main {
+    display: grid;
+    gap: 40px; /* Space between sections */
+    padding: 40px 0;
+}
+
+.content-card {
+    background-color: var(--cu-bg-light);
+    padding: clamp(30px, 5vw, 45px);
+    border-radius: 12px;
+    box-shadow: var(--cu-shadow-card);
+     border: 1px solid var(--cu-border-subtle);
+}
+
+.content-card.textured-bg {
+    background-color: var(--cu-bg-secondary); /* Use alternating bg */
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--cu-border-light);
+    padding-bottom: 15px;
+}
+
+.section-header .icon {
+    color: var(--cu-purple);
+    flex-shrink: 0; /* Prevent icon shrinking */
+    width: 28px; /* Slightly larger icon */
+    height: 28px;
+    margin-right: 0; /* Removed margin as gap handles spacing */
+}
+
+.section-header h2 {
+    margin-bottom: 0; /* Remove default margin */
+}
+
+.content-card p:last-child {
+    margin-bottom: 0; /* Remove bottom margin on last paragraph */
+}
+
+/* === FOOTER === */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 40px;
+    border-top: 1px solid var(--cu-border-light);
+    background-color: var(--cu-bg-light);
+}
+
+footer p {
+    margin-bottom: 0.5em;
+    color: var(--cu-text-secondary);
+    font-size: 0.9rem;
+}
+
+footer p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* === RESPONSIVE ADJUSTMENTS === */
+@media (max-width: 768px) {
+    h1 { font-size: clamp(2rem, 6vw, 2.8rem); }
+    h2 { font-size: clamp(1.4rem, 5vw, 1.8rem); }
+
+    .hero .contact-info {
+         flex-direction: column;
+         align-items: center;
+         gap: 15px;
+    }
+
+    .cta-button {
+        padding: 10px 25px;
+        font-size: 0.95rem;
+    }
+     main {
+         gap: 30px;
+     }
+     .content-card {
+         padding: clamp(25px, 4vw, 35px);
+     }
+     .section-header {
+         gap: 10px;
+         margin-bottom: 20px;
+         padding-bottom: 10px;
+     }
+     .section-header .icon {
+         width: 24px;
+         height: 24px;
+     }
+}
